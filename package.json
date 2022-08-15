@@ -1,0 +1,26 @@
+{
+  "name": "example_bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Monsophia/example_bot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Monsophia/example_bot/issues"
+  },
+  "homepage": "https://github.com/Monsophia/example_bot#readme",
+  "dependencies": {
+    "@extreme_hero/deeptype": "^1.0.1",
+    "chalk": "^4.0.0",
+    "discord.js": "^13.8.1",
+    "glob": "^8.0.3"
+  }
+}
