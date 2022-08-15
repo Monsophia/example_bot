@@ -14,7 +14,7 @@ module.exports = class extends Command {
 
     async run(message, args) {
         const client = this.client,
-            msg = message
+            msg = message;
 
         const guild = client.guilds.cache.get(args[0])
 
