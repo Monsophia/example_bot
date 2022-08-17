@@ -18,7 +18,8 @@ module.exports = class extends Command {
             .setColor("RANDOM")
             .setTitle(`${message.guild.name} Help Menu`, message.guild.iconURL({ dynamic: true }))
             .setThumbnail(this.client.user.displayAvatarURL())
-            .setTimestamp();
+            .setTimestamp()
+            .setFooter({ text: `Made with <3 by Røyal ツ#2917` })
 
 
         if (command) {
