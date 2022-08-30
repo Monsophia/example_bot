@@ -19,8 +19,6 @@ module.exports = class extends Command {
             .setTitle(`${message.guild.name} Help Menu`, message.guild.iconURL({ dynamic: true }))
             .setThumbnail(this.client.user.displayAvatarURL())
             .setTimestamp()
-            .setFooter({ text: `Made with <3 by Røyal ツ#2917` })
-
 
         if (command) {
             const cmd = this.client.commands.get(command) || this.client.commands.get(this.client.aliases.get(command));
