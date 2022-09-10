@@ -14,10 +14,66 @@ module.exports = class extends Event {
     const client = this.client,
       bot = client
 
+    client.on("guildCreate", async (guild) => {
+      const members = guild.members.cache
+
+      this.client.logger.warn(`i have been added to ${guild.name} (${guild.id}) | Owner: ${client.users.cache.get(guild.ownerId).tag} (${guild.ownerId})`)
+
+      const ch = client.channels.cache.get('984939956982136892')
+      ch.send(`${client.user.username} is now in ${client.guilds.cache.size} servers`)
+
+      const neededChannel = '984095549642928159'
+      const c = client.channels.cache.get(neededChannel)
+      const embed = new MessageEmbed()
+        .setColor("GREEN")
+        .addFields({
+          name: `Guild join`,
+          value: [
+            `Name: ${guild.name} (${guild.id})`,
+            `Owner: ${client.users.cache.get(guild.ownerId).tag} (${guild.ownerId})`,
+            `Humans: ${members.filter((member) => !member.user.bot).size.toLocaleString()}`,
+            `Bots: ${members.filter((member) => member.user.bot).size.toLocaleString()}`
+          ].join("\n")
+        })
+      c.send({ embeds: [embed] })
+    })
+
+    client.on("guildDelete", async (guild) => {
+      const members = guild.members.cache
+
+      this.client.logger.warn(`i have been removed from ${guild.name} (${guild.id}) | Owner: ${client.users.cache.get(guild.ownerId).tag} (${guild.ownerId})`)
+
+      const ch = client.channels.cache.get('984939956982136892')
+      ch.send(`${client.user.username} is now in ${client.guilds.cache.size} servers`)
+
+      const neededChannel = '984095590134718494'
+      const c = client.channels.cache.get(neededChannel)
+      const embed = new MessageEmbed()
+        .setColor("GREEN")
+        .addFields({
+          name: `Guild leave`,
+          value: [
+            `Name: ${guild.name} (${guild.id})`,
+            `Owner: ${client.users.cache.get(guild.ownerId).tag} (${guild.ownerId})`,
+            `Humans: ${members.filter((member) => !member.user.bot).size.toLocaleString()}`,
+            `Bots: ${members.filter((member) => member.user.bot).size.toLocaleString()}`].join("\n")
+        })
+      c.send({ embeds: [embed] })
+    })
+
     //shard error handling 
     this.client.once('shardError', (error) => {
       this.client.logger.error('A websocket connection encountered an error:', error);
     });
+
+    const activities = [
+      `${this.client.guilds.cache.size.toLocaleString()} servers!`,
+      `${this.client.channels.cache.size.toLocaleString()} channels!`,
+      `${this.client.guilds.cache.reduce((a, b) => a + b.memberCount, 0).toLocaleString()} users!`,
+    ];
+
+    let i = 0;
+    setInterval(() => this.client.user.setActivity(`${activities[i++ % activities.length]}`, { type: "WATCHING" }), 15000);
 
     this.client.logger.log([
       `Logged in as: ${this.client.user.tag} (${this.client.user.id})`,
