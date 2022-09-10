@@ -1,6 +1,6 @@
 "use strict";
 
-const { EmbedBuilder } = require("discord.js"),
+const { MessageEmbed } = require("discord.js"),
     Command = require("../../Structures/Command");
 
 module.exports = class extends Command {
@@ -15,9 +15,9 @@ module.exports = class extends Command {
         const client = this.client,
             msg = message
 
-        const e = new EmbedBuilder()
+        const e = new MessageEmbed()
             .setThumbnail(message.guild.iconURL({ dynamic: true }))
-            .setColor("Random")
+            .setColor("RANDOM")
             .setTimestamp()
             .addFields({
                 name: `${client.user.username}\'s stats`,

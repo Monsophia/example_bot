@@ -1,6 +1,6 @@
 "use strict";
 
-const { EmbedBuilder } = require("discord.js"),
+const { EmbedBuilder, MessageEmbed } = require("discord.js"),
     { version, license } = require("../../../data/config.json"),
     Command = require("../../Structures/Command"),
     { utc } = require("moment");
@@ -18,9 +18,9 @@ module.exports = class extends Command {
         const client = this.client,
             msg = message
 
-        const embed = new EmbedBuilder()
+        const embed = new MessageEmbed()
             .setThumbnail(this.client.user.displayAvatarURL({ dynamic: true }))
-            .setColor("Random")
+            .setColor("RANDOM")
             .setDescription(`**Bot information for __${client.user.username}__**`)
             .addFields({
                 name: "General",

@@ -1,7 +1,7 @@
 
 "use strict";
 
-const { EmbedBuilder } = require("discord.js"),
+const { MessageEmbed } = require("discord.js"),
     Command = require("../../Structures/Command")
 
 module.exports = class extends Command {
@@ -19,9 +19,9 @@ module.exports = class extends Command {
             client = this.client;
 
         client.shard.broadcastEval(client => [client.shard.ids, client.ws.status, client.ws.ping, client.guilds.cache.size]).then((results) => {
-            const embed = new EmbedBuilder()
+            const embed = new MessageEmbed()
                 .setTitle(`Bot Shards (${msg.guild.shard.id}/${client.shard.count})`)
-                .setColor('Random')
+                .setColor('RANDOM')
                 .setTimestamp()
 
             results.map((data) => {

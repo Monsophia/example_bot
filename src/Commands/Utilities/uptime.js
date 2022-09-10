@@ -2,7 +2,7 @@
 
 const Command = require("../../Structures/Command"),
     ms = require("ms"),
-    { EmbedBuilder, MessageEmbed } = require("discord.js"),
+    { MessageEmbed } = require("discord.js"),
     os = require("os");
 
 module.exports = class extends Command {

@@ -1,7 +1,7 @@
 "use strict";
 
 const Command = require("../../Structures/Command"),
-    { EmbedBuilder } = require("discord.js"),
+    { EmbedBuilder, MessageEmbed } = require("discord.js"),
     moment = require("moment")
 
 module.exports = class extends Command {
@@ -18,10 +18,10 @@ module.exports = class extends Command {
         const user = message.mentions.users.last() || !isNaN(target) && await message.client.users.fetch(target) || message.author;
         const member = message.guild.members.cache.get(user.id);
 
-        const embed = new EmbedBuilder()
+        const embed = new MessageEmbed()
             .setDescription(`**User information for __${user.username}__**`)
             .setThumbnail(user.displayAvatarURL({ dynamic: true, size: 512 }))
-            .setColor(user.displayHexColor || "Random")
+            .setColor(user.displayHexColor || "RANDOM")
             .addFields({
                 name: "User",
                 value: [

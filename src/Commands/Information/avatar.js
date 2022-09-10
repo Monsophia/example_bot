@@ -1,6 +1,6 @@
 "use strict";
 
-const { EmbedBuilder } = require("discord.js"),
+const { EmbedBuilder, MessageEmbed } = require("discord.js"),
     Command = require("../../Structures/Command");
 
 module.exports = class extends Command {
@@ -17,9 +17,9 @@ module.exports = class extends Command {
 
         const member = message.guild.members.cache.get(args[0]) || message.mentions.members.last() || message.member;
 
-        const e = new EmbedBuilder()
+        const e = new MessageEmbed()
             .setTitle(`${member.user.username}\'s avatar`)
-            .setColor("Random")
+            .setColor("RANDOM")
             .setTimestamp()
             .setImage(member.user.displayAvatarURL({ dynamic: true, size: 4096 }));
 

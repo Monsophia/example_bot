@@ -1,7 +1,7 @@
 "use strict";
 
 const Command = require("../../Structures/Command"),
-    { EmbedBuilder, MessageEmbed } = require("discord.js")
+    { MessageEmbed } = require("discord.js")
 
 module.exports = class extends Command {
     constructor(...args) {
