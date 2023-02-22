@@ -1,7 +1,6 @@
 {
   "name": "example_bot",
   "version": "1.0.0",
-  "description": "",
   "main": "src/bot.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -24,5 +23,7 @@
     "glob": "^8.0.3",
     "moment": "^2.29.4",
     "nsfw-discord": "^7.0.0"
-  }
+  },
+  "devDependencies": {},
+  "description": ""
 }

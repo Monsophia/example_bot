@@ -1,7 +1,6 @@
 "use strict";
 
-const Event = require("../Structures/Event"),
-  { MessageEmbed } = require("discord.js")
+const Event = require("../Structures/Event")
 
 module.exports = class extends Event {
   constructor(...args) {
@@ -14,52 +13,6 @@ module.exports = class extends Event {
     const client = this.client,
       bot = client
 
-    client.on("guildCreate", async (guild) => {
-      const members = guild.members.cache
-
-      this.client.logger.warn(`i have been added to ${guild.name} (${guild.id}) | Owner: ${client.users.cache.get(guild.ownerId).tag} (${guild.ownerId})`)
-
-      const ch = client.channels.cache.get('984939956982136892')
-      ch.send(`${client.user.username} is now in ${client.guilds.cache.size} servers`)
-
-      const neededChannel = '984095549642928159'
-      const c = client.channels.cache.get(neededChannel)
-      const embed = new MessageEmbed()
-        .setColor("GREEN")
-        .addFields({
-          name: `Guild join`,
-          value: [
-            `Name: ${guild.name} (${guild.id})`,
-            `Owner: ${client.users.cache.get(guild.ownerId).tag} (${guild.ownerId})`,
-            `Humans: ${members.filter((member) => !member.user.bot).size.toLocaleString()}`,
-            `Bots: ${members.filter((member) => member.user.bot).size.toLocaleString()}`
-          ].join("\n")
-        })
-      c.send({ embeds: [embed] })
-    })
-
-    client.on("guildDelete", async (guild) => {
-      const members = guild.members.cache
-
-      this.client.logger.warn(`i have been removed from ${guild.name} (${guild.id}) | Owner: ${client.users.cache.get(guild.ownerId).tag} (${guild.ownerId})`)
-
-      const ch = client.channels.cache.get('984939956982136892')
-      ch.send(`${client.user.username} is now in ${client.guilds.cache.size} servers`)
-
-      const neededChannel = '984095590134718494'
-      const c = client.channels.cache.get(neededChannel)
-      const embed = new MessageEmbed()
-        .setColor("GREEN")
-        .addFields({
-          name: `Guild leave`,
-          value: [
-            `Name: ${guild.name} (${guild.id})`,
-            `Owner: ${client.users.cache.get(guild.ownerId).tag} (${guild.ownerId})`,
-            `Humans: ${members.filter((member) => !member.user.bot).size.toLocaleString()}`,
-            `Bots: ${members.filter((member) => member.user.bot).size.toLocaleString()}`].join("\n")
-        })
-      c.send({ embeds: [embed] })
-    })
 
     //shard error handling 
     this.client.once('shardError', (error) => {
